@@ -261,11 +261,9 @@ _Within each of the 4 nations, what is the proportion of tourist attractions tha
 ```{r Ex_m}
 visitors_with_nations%>%
   group_by(nation) %>%
-  filter(admission == "Free") %>%
-  count() %>%
-  proportions()
-  
-
+  count(admission) %>%
+  mutate(n/sum(n)) %>%
+  filter(admission == "Free")
 
 ```
 
